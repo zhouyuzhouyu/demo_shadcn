@@ -1,0 +1,26 @@
+name: Claude Automation
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            ${{ github.event_name == 'issues' &&
+              '阅读这个 issue 并分析需求。如果是可实现的功能或 bug 修复,请修改代码、创建一个新分支并提交 PR,然后在 issue 下回复你的实现方案与对应的 PR 链接;如果信息不足,请在 issue 下回复请求补充。' ||
+              '' }}
