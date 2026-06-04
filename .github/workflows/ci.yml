@@ -43,6 +43,8 @@ jobs:
   build-web:
     name: Build Web
     needs: analyze-and-test
+    # 仅在推送到 main 时构建产物;PR 只做 analyze+test
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,6 +66,8 @@ jobs:
   build-apk:
     name: Build APK
     needs: analyze-and-test
+    # 仅在推送到 main 时构建产物;PR 只做 analyze+test
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
