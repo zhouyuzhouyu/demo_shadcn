@@ -40,8 +40,14 @@ jobs:
           additional_permissions: |
             actions: read
 
+          # 始终维护一条可见的状态评论(开始/进行中/结果),避免“跑了却无反馈”
+          use_sticky_comment: true
+
+          # 放开建分支/提 PR 与本地验证所需的工具(否则会被工具白名单拒绝)
+          claude_args: '--allowed-tools "Bash(git:*),Bash(gh pr:*),Bash(gh issue:*),Bash(flutter:*),Bash(dart:*)"'
+
           # 新 issue 自动触发时给定指令;@claude 评论触发时留空,改用评论内容
           prompt: |
             ${{ github.event_name == 'issues' &&
-              '阅读这个 issue 并分析需求。如果是可实现的功能或 bug 修复,请修改代码、创建一个新分支并提交 PR,然后在 issue 下回复你的实现方案与对应的 PR 链接;如果信息不足,请在 issue 下回复请求补充。' ||
+              '阅读这个 issue 并分析需求。如果是可实现的功能或 bug 修复,请修改代码、创建一个新分支并提交 PR,然后在 issue 下回复你的实现方案与对应的 PR 链接;如果信息不足,请在 issue 下回复请求补充。涉及 UI 的改动须遵循仓库 docs/2026-06-04-flutter-theme-handoff.md 的主题规范。' ||
               '' }}

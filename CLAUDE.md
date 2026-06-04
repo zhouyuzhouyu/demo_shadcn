@@ -25,6 +25,7 @@ flutter build web --release --wasm       # web build as CI/Pages produce it (Was
 - **Root is `ShadApp`, not `MaterialApp`** ([lib/main.dart](lib/main.dart)). Theming comes from `ShadThemeData` with `ShadZincColorScheme` (light + dark).
 - **Pages mix Material chrome with shadcn content.** Each page in [lib/pages/](lib/pages/) uses a Material `Scaffold` + `AppBar` and `Navigator.push(MaterialPageRoute(...))` for navigation, but the page *content* is built from `shadcn_ui` widgets (`ShadCard`, `ShadButton`, `ShadInput`, …).
 - **Colors/spacing read from the Shad theme**, not Material's: `final theme = ShadTheme.of(context);` then `theme.colorScheme.background / foreground / border`. Follow this when adding UI.
+- **All UI work must follow the approved theme spec** in [docs/2026-06-04-flutter-theme-handoff.md](docs/2026-06-04-flutter-theme-handoff.md): shadcn_ui "Lime" preset, DM Sans font (PingFang SC fallback), Remix Icon, base radius `0.45rem`, accent = soft Lime tint (never dark green), selection = near-black fill. Read it before changing colors, typography, spacing, or icons.
 - [lib/pages/home_page.dart](lib/pages/home_page.dart) is the entry list; each demo page is self-contained and independent (no shared state), typically using a private `_buildSectionTitle` helper to separate component sections.
 
 ## shadcn_ui version gotchas
