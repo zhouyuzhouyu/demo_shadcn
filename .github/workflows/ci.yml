@@ -52,7 +52,8 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: flutter build web --release
+      # --wasm:WasmGC 构建,运行时自动回退到 JS(产物含两套)
+      - run: flutter build web --release --wasm
       - uses: actions/upload-artifact@v4
         with:
           name: web-build

@@ -32,7 +32,8 @@ jobs:
           cache: true
       - run: flutter pub get
       # 项目页地址为 https://<user>.github.io/demo_shadcn/,base-href 需匹配子路径
-      - run: flutter build web --release --base-href /demo_shadcn/
+      # --wasm:WasmGC 构建,运行时自动回退到 JS(产物含两套)
+      - run: flutter build web --release --wasm --base-href /demo_shadcn/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/web
