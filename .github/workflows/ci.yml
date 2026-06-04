@@ -3,7 +3,11 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
   pull_request:
+    paths-ignore:
+      - '**.md'
 
 # 同一分支/PR 新 push 时取消上一次未完成的运行,省额度
 concurrency:

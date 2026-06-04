@@ -3,6 +3,8 @@ name: Deploy Web to Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
   workflow_dispatch:
 
 # 允许该 workflow 写 Pages
