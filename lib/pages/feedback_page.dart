@@ -211,7 +211,11 @@ class _FeedbackPageState extends State<FeedbackPage> {
             children: [
               const _Skeleton(height: 14, width: 200),
               const SizedBox(height: 8),
-              _Skeleton(height: 12, width: MediaQuery.sizeOf(context).width - 120),
+              _Skeleton(
+                height: 12,
+                width: (MediaQuery.sizeOf(context).width - 120)
+                    .clamp(0.0, double.infinity),
+              ),
               const SizedBox(height: 4),
               const _Skeleton(height: 12, width: 150),
             ],
