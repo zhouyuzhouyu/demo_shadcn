@@ -134,11 +134,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 ),
                 ShadButton.secondary(
                   onPressed: () {
-                    ShadToaster.of(context).show(
-                      const ShadToast(
-                        title: Text('Simple message'),
-                      ),
-                    );
+                    ShadToaster.of(
+                      context,
+                    ).show(const ShadToast(title: Text('Simple message')));
                   },
                   child: const Text('Simple Toast'),
                 ),
@@ -213,8 +211,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
               const SizedBox(height: 8),
               _Skeleton(
                 height: 12,
-                width: (MediaQuery.sizeOf(context).width - 120)
-                    .clamp(0.0, double.infinity),
+                width: (MediaQuery.sizeOf(context).width - 120).clamp(
+                  0.0,
+                  double.infinity,
+                ),
               ),
               const SizedBox(height: 4),
               const _Skeleton(height: 12, width: 150),
@@ -242,7 +242,13 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   children: [
                     _Skeleton(
                       height: 12,
-                      width: (i == 0 ? 180 : i == 1 ? 220 : 150).toDouble(),
+                      width:
+                          (i == 0
+                                  ? 180
+                                  : i == 1
+                                  ? 220
+                                  : 150)
+                              .toDouble(),
                     ),
                     const SizedBox(height: 4),
                     const _Skeleton(height: 10, width: 100),
@@ -305,9 +311,10 @@ class _SkeletonState extends State<_Skeleton>
         widget.width == widget.height;
 
     return FadeTransition(
-      opacity: Tween<double>(begin: 0.4, end: 1).animate(
-        CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-      ),
+      opacity: Tween<double>(
+        begin: 0.4,
+        end: 1,
+      ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut)),
       child: Container(
         width: widget.width,
         height: widget.height,

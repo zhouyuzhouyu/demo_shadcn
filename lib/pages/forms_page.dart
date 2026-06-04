@@ -51,10 +51,7 @@ class _FormsPageState extends State<FormsPage> {
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 8),
-            const ShadInput(
-              placeholder: Text('Password'),
-              obscureText: true,
-            ),
+            const ShadInput(placeholder: Text('Password'), obscureText: true),
             const SizedBox(height: 8),
             const ShadInput(
               placeholder: Text('Search...'),
@@ -83,9 +80,7 @@ class _FormsPageState extends State<FormsPage> {
             const SizedBox(height: 32),
             _buildSectionTitle(context, 'Textarea'),
             const SizedBox(height: 12),
-            const ShadTextarea(
-              placeholder: Text('Type your message here.'),
-            ),
+            const ShadTextarea(placeholder: Text('Type your message here.')),
             const SizedBox(height: 32),
             _buildSectionTitle(context, 'Checkbox'),
             const SizedBox(height: 12),
@@ -195,20 +190,29 @@ class _FormsPageState extends State<FormsPage> {
               options: [
                 _buildSelectGroupLabel(context, 'North America'),
                 const ShadOption(
-                    value: 'est', child: Text('Eastern Standard Time (EST)')),
+                  value: 'est',
+                  child: Text('Eastern Standard Time (EST)'),
+                ),
                 const ShadOption(
-                    value: 'cst', child: Text('Central Standard Time (CST)')),
+                  value: 'cst',
+                  child: Text('Central Standard Time (CST)'),
+                ),
                 const ShadOption(
-                    value: 'pst', child: Text('Pacific Standard Time (PST)')),
+                  value: 'pst',
+                  child: Text('Pacific Standard Time (PST)'),
+                ),
                 _buildSelectGroupLabel(context, 'Europe'),
                 const ShadOption(
-                    value: 'gmt', child: Text('Greenwich Mean Time (GMT)')),
+                  value: 'gmt',
+                  child: Text('Greenwich Mean Time (GMT)'),
+                ),
                 const ShadOption(
-                    value: 'cet', child: Text('Central European Time (CET)')),
+                  value: 'cet',
+                  child: Text('Central European Time (CET)'),
+                ),
               ],
               selectedOptionBuilder: (context, value) => Text(value),
-              onChanged: (value) =>
-                  setState(() => _selectedTimezone = value),
+              onChanged: (value) => setState(() => _selectedTimezone = value),
             ),
             if (_selectedTimezone != null) ...[
               const SizedBox(height: 8),
@@ -279,8 +283,9 @@ class _FormsPageState extends State<FormsPage> {
                     id: 'username',
                     label: const Text('Username'),
                     placeholder: const Text('shadcn'),
-                    description:
-                        const Text('This is your public display name.'),
+                    description: const Text(
+                      'This is your public display name.',
+                    ),
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'Please enter a username';

@@ -42,10 +42,7 @@ class _ButtonsPageState extends State<ButtonsPage> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                ShadButton(
-                  onPressed: () {},
-                  child: const Text('Default'),
-                ),
+                ShadButton(onPressed: () {}, child: const Text('Default')),
                 ShadButton.destructive(
                   onPressed: () {},
                   child: const Text('Destructive'),
@@ -58,14 +55,8 @@ class _ButtonsPageState extends State<ButtonsPage> {
                   onPressed: () {},
                   child: const Text('Secondary'),
                 ),
-                ShadButton.ghost(
-                  onPressed: () {},
-                  child: const Text('Ghost'),
-                ),
-                ShadButton.link(
-                  onPressed: () {},
-                  child: const Text('Link'),
-                ),
+                ShadButton.ghost(onPressed: () {}, child: const Text('Ghost')),
+                ShadButton.link(onPressed: () {}, child: const Text('Link')),
               ],
             ),
             const SizedBox(height: 32),
@@ -110,10 +101,7 @@ class _ButtonsPageState extends State<ButtonsPage> {
                   onPressed: () {},
                   child: const Text('Small'),
                 ),
-                ShadButton(
-                  onPressed: () {},
-                  child: const Text('Default'),
-                ),
+                ShadButton(onPressed: () {}, child: const Text('Default')),
                 ShadButton(
                   size: ShadButtonSize.lg,
                   onPressed: () {},
@@ -188,10 +176,7 @@ class _ButtonsPageState extends State<ButtonsPage> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                ShadButton(
-                  onPressed: null,
-                  child: const Text('Default'),
-                ),
+                ShadButton(onPressed: null, child: const Text('Default')),
                 ShadButton.destructive(
                   onPressed: null,
                   child: const Text('Destructive'),
@@ -204,10 +189,7 @@ class _ButtonsPageState extends State<ButtonsPage> {
                   onPressed: null,
                   child: const Text('Secondary'),
                 ),
-                ShadButton.ghost(
-                  onPressed: null,
-                  child: const Text('Ghost'),
-                ),
+                ShadButton.ghost(onPressed: null, child: const Text('Ghost')),
               ],
             ),
             const SizedBox(height: 32),

@@ -33,9 +33,7 @@ class DisplayPage extends StatelessWidget {
             const SizedBox(height: 12),
             ShadCard(
               title: const Text('Create project'),
-              description: const Text(
-                'Deploy your new project in one-click.',
-              ),
+              description: const Text('Deploy your new project in one-click.'),
               footer: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -44,10 +42,7 @@ class DisplayPage extends StatelessWidget {
                     child: const Text('Cancel'),
                   ),
                   const SizedBox(width: 8),
-                  ShadButton(
-                    onPressed: () {},
-                    child: const Text('Deploy'),
-                  ),
+                  ShadButton(onPressed: () {}, child: const Text('Deploy')),
                 ],
               ),
               child: const Column(
@@ -199,10 +194,7 @@ class DisplayPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const ShadAvatar(
-                  '',
-                  placeholder: Text('AB'),
-                ),
+                const ShadAvatar('', placeholder: Text('AB')),
               ],
             ),
             const SizedBox(height: 32),
@@ -320,8 +312,10 @@ class DisplayPage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Current password',
-                                style: TextStyle(fontSize: 13)),
+                            Text(
+                              'Current password',
+                              style: TextStyle(fontSize: 13),
+                            ),
                             SizedBox(height: 4),
                             ShadInput(
                               placeholder: Text('Current password'),
@@ -333,8 +327,10 @@ class DisplayPage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('New password',
-                                style: TextStyle(fontSize: 13)),
+                            Text(
+                              'New password',
+                              style: TextStyle(fontSize: 13),
+                            ),
                             SizedBox(height: 4),
                             ShadInput(
                               placeholder: Text('New password'),
@@ -498,10 +494,7 @@ class DisplayPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: _buildStatusBadge(status),
-                  ),
+                  Expanded(flex: 2, child: _buildStatusBadge(status)),
                   Expanded(
                     flex: 2,
                     child: Text(

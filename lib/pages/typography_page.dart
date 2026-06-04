@@ -31,8 +31,10 @@ class TypographyPage extends StatelessWidget {
           children: [
             _buildSectionTitle(context, 'Headings'),
             const SizedBox(height: 12),
-            Text('Taxing Laughter: The Joke Tax Chronicles',
-                style: theme.textTheme.h1),
+            Text(
+              'Taxing Laughter: The Joke Tax Chronicles',
+              style: theme.textTheme.h1,
+            ),
             const SizedBox(height: 8),
             Text('The People of the Kingdom', style: theme.textTheme.h2),
             const SizedBox(height: 8),
@@ -75,18 +77,13 @@ class TypographyPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 16),
               decoration: BoxDecoration(
                 border: Border(
-                  left: BorderSide(
-                    color: theme.colorScheme.border,
-                    width: 2,
-                  ),
+                  left: BorderSide(color: theme.colorScheme.border, width: 2),
                 ),
               ),
               child: Text(
                 '"After all," he said, "everyone enjoys a good joke, '
                 'so it\'s only fair that they pay for the privilege."',
-                style: theme.textTheme.p.copyWith(
-                  fontStyle: FontStyle.italic,
-                ),
+                style: theme.textTheme.p.copyWith(fontStyle: FontStyle.italic),
               ),
             ),
             const SizedBox(height: 32),
@@ -95,10 +92,7 @@ class TypographyPage extends StatelessWidget {
             Text.rich(
               TextSpan(
                 children: [
-                  TextSpan(
-                    text: 'The ',
-                    style: theme.textTheme.p,
-                  ),
+                  TextSpan(text: 'The ', style: theme.textTheme.p),
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
                     baseline: TextBaseline.alphabetic,
@@ -168,9 +162,7 @@ class TypographyPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Text(item, style: theme.textTheme.p),
-              ),
+              Expanded(child: Text(item, style: theme.textTheme.p)),
             ],
           ),
         );

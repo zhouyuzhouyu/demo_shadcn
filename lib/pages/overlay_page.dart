@@ -193,9 +193,7 @@ class _OverlayPageState extends State<OverlayPage> {
                                   ),
                                 ),
                                 const SizedBox(height: 4),
-                                const ShadInput(
-                                  initialValue: '100%',
-                                ),
+                                const ShadInput(initialValue: '100%'),
                               ],
                             ),
                           ),
@@ -212,9 +210,7 @@ class _OverlayPageState extends State<OverlayPage> {
                                   ),
                                 ),
                                 const SizedBox(height: 4),
-                                const ShadInput(
-                                  initialValue: '25px',
-                                ),
+                                const ShadInput(initialValue: '25px'),
                               ],
                             ),
                           ),
@@ -438,9 +434,7 @@ class _OverlayPageState extends State<OverlayPage> {
                 children: [
                   Text('Bio', style: TextStyle(fontSize: 13)),
                   SizedBox(height: 4),
-                  ShadTextarea(
-                    placeholder: Text('Tell us about yourself'),
-                  ),
+                  ShadTextarea(placeholder: Text('Tell us about yourself')),
                 ],
               ),
             ],
