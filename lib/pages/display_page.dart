@@ -212,7 +212,7 @@ class DisplayPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Radix Primitives'),
-                ShadSeparator(
+                ShadSeparator.horizontal(
                   margin: const EdgeInsets.symmetric(vertical: 12),
                   color: theme.colorScheme.border,
                 ),
@@ -265,11 +265,10 @@ class DisplayPage extends StatelessWidget {
             _buildSectionTitle(context, 'Tabs'),
             const SizedBox(height: 12),
             ShadTabs<String>(
-              defaultValue: 'account',
+              value: 'account',
               tabs: [
                 ShadTab(
                   value: 'account',
-                  text: const Text('Account'),
                   content: ShadCard(
                     title: const Text('Account'),
                     description: const Text(
@@ -301,10 +300,10 @@ class DisplayPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  child: const Text('Account'),
                 ),
                 ShadTab(
                   value: 'password',
-                  text: const Text('Password'),
                   content: ShadCard(
                     title: const Text('Password'),
                     description: const Text(
@@ -344,6 +343,7 @@ class DisplayPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  child: const Text('Password'),
                 ),
               ],
             ),

@@ -58,7 +58,7 @@ class _FormsPageState extends State<FormsPage> {
             const SizedBox(height: 8),
             const ShadInput(
               placeholder: Text('Search...'),
-              prefix: Padding(
+              leading: Padding(
                 padding: EdgeInsets.only(right: 8),
                 child: Icon(LucideIcons.search, size: 16),
               ),
@@ -67,7 +67,7 @@ class _FormsPageState extends State<FormsPage> {
             ShadInput(
               placeholder: const Text('Enter amount'),
               keyboardType: TextInputType.number,
-              suffix: Padding(
+              trailing: Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Text(
                   'USD',
@@ -90,7 +90,6 @@ class _FormsPageState extends State<FormsPage> {
             _buildSectionTitle(context, 'Checkbox'),
             const SizedBox(height: 12),
             ShadCheckbox(
-              id: 'terms',
               value: _termsValue,
               onChanged: (v) => setState(() => _termsValue = v),
               label: const Text('Accept terms and conditions'),
@@ -100,14 +99,12 @@ class _FormsPageState extends State<FormsPage> {
             ),
             const SizedBox(height: 8),
             ShadCheckbox(
-              id: 'notify',
               value: _checkboxValue,
               onChanged: (v) => setState(() => _checkboxValue = v),
               label: const Text('Send me email notifications'),
             ),
             const SizedBox(height: 8),
             const ShadCheckbox(
-              id: 'disabled',
               value: false,
               onChanged: null,
               label: Text('Disabled checkbox'),
@@ -196,30 +193,18 @@ class _FormsPageState extends State<FormsPage> {
             ShadSelect<String>(
               placeholder: const Text('Select a timezone'),
               options: [
-                ShadSelectItemGroup<String>(
-                  label: const Text('North America'),
-                  children: const [
-                    ShadOption(
-                        value: 'est',
-                        child: Text('Eastern Standard Time (EST)')),
-                    ShadOption(
-                        value: 'cst',
-                        child: Text('Central Standard Time (CST)')),
-                    ShadOption(
-                        value: 'pst',
-                        child: Text('Pacific Standard Time (PST)')),
-                  ],
-                ),
-                ShadSelectItemGroup<String>(
-                  label: const Text('Europe'),
-                  children: const [
-                    ShadOption(
-                        value: 'gmt', child: Text('Greenwich Mean Time (GMT)')),
-                    ShadOption(
-                        value: 'cet',
-                        child: Text('Central European Time (CET)')),
-                  ],
-                ),
+                _buildSelectGroupLabel(context, 'North America'),
+                const ShadOption(
+                    value: 'est', child: Text('Eastern Standard Time (EST)')),
+                const ShadOption(
+                    value: 'cst', child: Text('Central Standard Time (CST)')),
+                const ShadOption(
+                    value: 'pst', child: Text('Pacific Standard Time (PST)')),
+                _buildSelectGroupLabel(context, 'Europe'),
+                const ShadOption(
+                    value: 'gmt', child: Text('Greenwich Mean Time (GMT)')),
+                const ShadOption(
+                    value: 'cet', child: Text('Central European Time (CET)')),
               ],
               selectedOptionBuilder: (context, value) => Text(value),
               onChanged: (value) =>
@@ -257,20 +242,27 @@ class _FormsPageState extends State<FormsPage> {
             const SizedBox(height: 12),
             ShadInputOTP(
               maxLength: 6,
-              children: const [
-                ShadInputOTPGroup(
+              children: [
+                const ShadInputOTPGroup(
                   children: [
-                    ShadInputOTPSlot(index: 0),
-                    ShadInputOTPSlot(index: 1),
-                    ShadInputOTPSlot(index: 2),
+                    ShadInputOTPSlot(),
+                    ShadInputOTPSlot(),
+                    ShadInputOTPSlot(),
                   ],
                 ),
-                ShadInputOTPSeparator(),
-                ShadInputOTPGroup(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Icon(
+                    LucideIcons.minus,
+                    size: 16,
+                    color: theme.colorScheme.mutedForeground,
+                  ),
+                ),
+                const ShadInputOTPGroup(
                   children: [
-                    ShadInputOTPSlot(index: 3),
-                    ShadInputOTPSlot(index: 4),
-                    ShadInputOTPSlot(index: 5),
+                    ShadInputOTPSlot(),
+                    ShadInputOTPSlot(),
+                    ShadInputOTPSlot(),
                   ],
                 ),
               ],
@@ -290,7 +282,7 @@ class _FormsPageState extends State<FormsPage> {
                     description:
                         const Text('This is your public display name.'),
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (value.isEmpty) {
                         return 'Please enter a username';
                       }
                       if (value.length < 2) {
@@ -309,7 +301,7 @@ class _FormsPageState extends State<FormsPage> {
                     placeholder: const Text('name@example.com'),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (value.isEmpty) {
                         return 'Please enter an email';
                       }
                       if (!value.contains('@')) {
@@ -362,6 +354,21 @@ class _FormsPageState extends State<FormsPage> {
             ),
             const SizedBox(height: 32),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSelectGroupLabel(BuildContext context, String label) {
+    final theme = ShadTheme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      child: Text(
+        label,
+        textAlign: TextAlign.start,
+        style: theme.textTheme.muted.copyWith(
+          fontWeight: FontWeight.w600,
+          color: theme.colorScheme.popoverForeground,
         ),
       ),
     );

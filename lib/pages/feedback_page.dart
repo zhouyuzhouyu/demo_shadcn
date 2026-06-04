@@ -39,7 +39,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
             _buildSectionTitle(context, 'Alert'),
             const SizedBox(height: 12),
             const ShadAlert(
-              iconSrc: LucideIcons.terminal,
+              icon: Icon(LucideIcons.terminal),
               title: Text('Heads up!'),
               description: Text(
                 'You can add components to your app using the shadcn_ui package.',
@@ -47,7 +47,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
             ),
             const SizedBox(height: 8),
             const ShadAlert.destructive(
-              iconSrc: LucideIcons.circleAlert,
+              icon: Icon(LucideIcons.circleAlert),
               title: Text('Error'),
               description: Text(
                 'Your session has expired. Please log in again.',
@@ -55,14 +55,26 @@ class _FeedbackPageState extends State<FeedbackPage> {
             ),
             const SizedBox(height: 8),
             ShadAlert(
-              iconSrc: LucideIcons.info,
+              icon: const Icon(LucideIcons.info),
+              iconColor: theme.colorScheme.secondaryForeground,
               title: const Text('Note'),
               description: const Text(
                 'This is an informational alert with a custom style.',
               ),
-              backgroundColor: theme.colorScheme.secondary,
-              border: Border.all(color: theme.colorScheme.border),
-              foregroundColor: theme.colorScheme.secondaryForeground,
+              titleStyle: TextStyle(
+                color: theme.colorScheme.secondaryForeground,
+              ),
+              descriptionStyle: TextStyle(
+                color: theme.colorScheme.secondaryForeground,
+              ),
+              decoration: ShadDecoration(
+                color: theme.colorScheme.secondary,
+                border: ShadBorder.all(
+                  color: theme.colorScheme.border,
+                  radius: theme.radius,
+                  padding: const EdgeInsets.all(16),
+                ),
+              ),
             ),
             const SizedBox(height: 32),
             _buildSectionTitle(context, 'Toast / Sonner'),
@@ -191,17 +203,17 @@ class _FeedbackPageState extends State<FeedbackPage> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ShadSkeleton(width: 48, height: 48),
+        const _Skeleton(width: 48, height: 48),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ShadSkeleton(height: 14, width: 200),
+              const _Skeleton(height: 14, width: 200),
               const SizedBox(height: 8),
-              ShadSkeleton(height: 12, width: MediaQuery.sizeOf(context).width - 120),
+              _Skeleton(height: 12, width: MediaQuery.sizeOf(context).width - 120),
               const SizedBox(height: 4),
-              const ShadSkeleton(height: 12, width: 150),
+              const _Skeleton(height: 12, width: 150),
             ],
           ),
         ),
@@ -218,18 +230,18 @@ class _FeedbackPageState extends State<FeedbackPage> {
           padding: const EdgeInsets.only(bottom: 12),
           child: Row(
             children: [
-              const ShadSkeleton(width: 40, height: 40),
+              const _Skeleton(width: 40, height: 40),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ShadSkeleton(
+                    _Skeleton(
                       height: 12,
                       width: (i == 0 ? 180 : i == 1 ? 220 : 150).toDouble(),
                     ),
                     const SizedBox(height: 4),
-                    const ShadSkeleton(height: 10, width: 100),
+                    const _Skeleton(height: 10, width: 100),
                   ],
                 ),
               ),
@@ -248,6 +260,58 @@ class _FeedbackPageState extends State<FeedbackPage> {
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: theme.colorScheme.foreground,
+      ),
+    );
+  }
+}
+
+/// A lightweight skeleton placeholder with a pulsing animation, replicating the
+/// shadcn "Skeleton" feedback component (not shipped in shadcn_ui 0.53.6).
+class _Skeleton extends StatefulWidget {
+  const _Skeleton({this.width, this.height});
+
+  final double? width;
+  final double? height;
+
+  @override
+  State<_Skeleton> createState() => _SkeletonState();
+}
+
+class _SkeletonState extends State<_Skeleton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1500),
+  )..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    // Avatar-sized squares render as circles, bars as rounded rectangles,
+    // matching the original layout intent.
+    final isCircle =
+        widget.width != null &&
+        widget.height != null &&
+        widget.width == widget.height;
+
+    return FadeTransition(
+      opacity: Tween<double>(begin: 0.4, end: 1).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+      ),
+      child: Container(
+        width: widget.width,
+        height: widget.height,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.muted,
+          borderRadius: isCircle ? null : theme.radius,
+          shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
+        ),
       ),
     );
   }

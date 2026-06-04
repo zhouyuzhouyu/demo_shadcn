@@ -112,10 +112,9 @@ class _OverlayPageState extends State<OverlayPage> {
                     padding: EdgeInsets.all(4),
                     child: Text('Add to library'),
                   ),
-                  child: ShadButton.outline(
-                    size: ShadButtonSize.icon,
+                  child: ShadIconButton.outline(
                     onPressed: () {},
-                    child: const Icon(LucideIcons.plus, size: 16),
+                    icon: const Icon(LucideIcons.plus, size: 16),
                   ),
                 ),
                 ShadTooltip(
@@ -123,10 +122,9 @@ class _OverlayPageState extends State<OverlayPage> {
                     padding: EdgeInsets.all(4),
                     child: Text('Delete item'),
                   ),
-                  child: ShadButton.ghost(
-                    size: ShadButtonSize.icon,
+                  child: ShadIconButton.ghost(
                     onPressed: () {},
-                    child: const Icon(LucideIcons.trash, size: 16),
+                    icon: const Icon(LucideIcons.trash, size: 16),
                   ),
                 ),
                 ShadTooltip(
@@ -134,10 +132,9 @@ class _OverlayPageState extends State<OverlayPage> {
                     padding: EdgeInsets.all(4),
                     child: Text('Open settings'),
                   ),
-                  child: ShadButton.ghost(
-                    size: ShadButtonSize.icon,
+                  child: ShadIconButton.ghost(
                     onPressed: () {},
-                    child: const Icon(LucideIcons.settings, size: 16),
+                    icon: const Icon(LucideIcons.settings, size: 16),
                   ),
                 ),
                 ShadTooltip(
@@ -147,10 +144,7 @@ class _OverlayPageState extends State<OverlayPage> {
                   ),
                   child: ShadButton(
                     onPressed: () {},
-                    icon: const Padding(
-                      padding: EdgeInsets.only(right: 8),
-                      child: Icon(LucideIcons.mail, size: 16),
-                    ),
+                    leading: const Icon(LucideIcons.mail, size: 16),
                     child: const Text('Email'),
                   ),
                 ),

@@ -77,34 +77,22 @@ class _ButtonsPageState extends State<ButtonsPage> {
               children: [
                 ShadButton(
                   onPressed: () {},
-                  icon: const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: Icon(LucideIcons.mail, size: 16),
-                  ),
+                  leading: const Icon(LucideIcons.mail, size: 16),
                   child: const Text('Login with Email'),
                 ),
                 ShadButton.outline(
                   onPressed: () {},
-                  icon: const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: Icon(LucideIcons.github, size: 16),
-                  ),
+                  leading: const Icon(LucideIcons.gitBranch, size: 16),
                   child: const Text('GitHub'),
                 ),
                 ShadButton.secondary(
                   onPressed: () {},
-                  icon: const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: Icon(LucideIcons.settings, size: 16),
-                  ),
+                  leading: const Icon(LucideIcons.settings, size: 16),
                   child: const Text('Settings'),
                 ),
                 ShadButton.destructive(
                   onPressed: () {},
-                  icon: const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: Icon(LucideIcons.trash, size: 16),
-                  ),
+                  leading: const Icon(LucideIcons.trash, size: 16),
                   child: const Text('Delete'),
                 ),
               ],
@@ -140,25 +128,21 @@ class _ButtonsPageState extends State<ButtonsPage> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                ShadButton(
-                  size: ShadButtonSize.icon,
+                ShadIconButton(
                   onPressed: () {},
-                  child: const Icon(LucideIcons.plus, size: 16),
+                  icon: const Icon(LucideIcons.plus, size: 16),
                 ),
-                ShadButton.outline(
-                  size: ShadButtonSize.icon,
+                ShadIconButton.outline(
                   onPressed: () {},
-                  child: const Icon(LucideIcons.settings, size: 16),
+                  icon: const Icon(LucideIcons.settings, size: 16),
                 ),
-                ShadButton.ghost(
-                  size: ShadButtonSize.icon,
+                ShadIconButton.ghost(
                   onPressed: () {},
-                  child: const Icon(LucideIcons.bell, size: 16),
+                  icon: const Icon(LucideIcons.bell, size: 16),
                 ),
-                ShadButton.destructive(
-                  size: ShadButtonSize.icon,
+                ShadIconButton.destructive(
                   onPressed: () {},
-                  child: const Icon(LucideIcons.trash, size: 16),
+                  icon: const Icon(LucideIcons.trash, size: 16),
                 ),
               ],
             ),
