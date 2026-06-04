@@ -216,20 +216,22 @@ class DisplayPage extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 12),
                   color: theme.colorScheme.border,
                 ),
-                Row(
-                  children: [
-                    const Text('Blog'),
-                    ShadSeparator.vertical(
-                      margin: const EdgeInsets.symmetric(horizontal: 12),
-                      color: theme.colorScheme.border,
-                    ),
-                    const Text('Docs'),
-                    ShadSeparator.vertical(
-                      margin: const EdgeInsets.symmetric(horizontal: 12),
-                      color: theme.colorScheme.border,
-                    ),
-                    const Text('Source'),
-                  ],
+                IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      const Text('Blog'),
+                      ShadSeparator.vertical(
+                        margin: const EdgeInsets.symmetric(horizontal: 12),
+                        color: theme.colorScheme.border,
+                      ),
+                      const Text('Docs'),
+                      ShadSeparator.vertical(
+                        margin: const EdgeInsets.symmetric(horizontal: 12),
+                        color: theme.colorScheme.border,
+                      ),
+                      const Text('Source'),
+                    ],
+                  ),
                 ),
               ],
             ),
