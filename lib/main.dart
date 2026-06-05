@@ -62,24 +62,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // DM Sans + PingFang SC fallback per theme spec section 2
-    final dmSansFamily = GoogleFonts.dmSans().fontFamily!;
+    // ShadTextTheme only takes a family string; PingFang SC fallback is applied via DefaultTextStyle.merge below
+    final dmSansStyle = GoogleFonts.dmSans(
+      fontFamilyFallback: ['PingFang SC', '.PingFang SC', 'Heiti SC'],
+    );
 
     return ShadApp(
       title: 'Shadcn UI Demo',
       theme: ShadThemeData(
         brightness: Brightness.light,
         colorScheme: _limeLightScheme,
-        textTheme: ShadTextTheme(family: dmSansFamily),
-        radius: 7.2, // 0.45rem base radius (at 16px/rem)
+        textTheme: ShadTextTheme(family: dmSansStyle.fontFamily!),
+        radius: BorderRadius.circular(7.2), // 0.45rem base radius (at 16px/rem)
       ),
       darkTheme: ShadThemeData(
         brightness: Brightness.dark,
         colorScheme: _limeDarkScheme,
-        textTheme: ShadTextTheme(family: dmSansFamily),
-        radius: 7.2,
+        textTheme: ShadTextTheme(family: dmSansStyle.fontFamily!),
+        radius: BorderRadius.circular(7.2),
       ),
-      home: const HomePage(),
+      home: DefaultTextStyle.merge(
+        style: TextStyle(fontFamilyFallback: dmSansStyle.fontFamilyFallback),
+        child: const HomePage(),
+      ),
     );
   }
 }
