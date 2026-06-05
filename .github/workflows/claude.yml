@@ -34,7 +34,7 @@ jobs:
             actions: read
           use_sticky_comment: true
           claude_args: '--allowed-tools "Bash(git:*),Bash(gh pr:*),Bash(gh issue:*),Bash(flutter:*),Bash(dart:*)"'
-          prompt: '阅读这个 issue 并分析需求。如果是可实现的功能或 bug 修复,请修改代码、创建一个新分支并提交 PR,然后在 issue 下回复你的实现方案与对应的 PR 链接;如果信息不足,请在 issue 下回复请求补充。涉及 UI 的改动须遵循仓库 docs/2026-06-04-flutter-theme-handoff.md 的主题规范。'
+          prompt: '阅读这个 issue 并分析需求。如果是可实现的功能或 bug 修复,请修改代码、创建一个新分支并提交 PR,然后在 issue 下回复你的实现方案与对应的 PR 链接;如果信息不足,请在 issue 下回复请求补充。提交前必须依次本地运行 `flutter pub get`、`dart format .`、`flutter analyze`,确保 `dart format` 后无文件改动、`flutter analyze` 零 issue 再提交(否则 CI 的格式化与静态分析门禁会失败)。涉及 UI 的改动须遵循仓库 docs/2026-06-04-flutter-theme-handoff.md 的主题规范。'
 
   # @claude 提及(评论/review) → tag 模式:不传 prompt,用评论内容作为指令
   tag:
