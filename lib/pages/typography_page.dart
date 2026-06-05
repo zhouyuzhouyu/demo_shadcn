@@ -20,10 +20,7 @@ class TypographyPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           '排版 / Typography',
-          style: TextStyle(
-            color: fg,
-            fontFamilyFallback: _fontFallback,
-          ),
+          style: TextStyle(color: fg, fontFamilyFallback: _fontFallback),
         ),
         iconTheme: IconThemeData(color: fg),
         bottom: PreferredSize(
@@ -309,10 +306,7 @@ class TypographyPage extends StatelessWidget {
                   style: i == 0 ? headerStyle : dataStyle,
                 ),
               ),
-              Text(
-                rows[i].$3,
-                style: i == 0 ? headerStyle : dataStyle,
-              ),
+              Text(rows[i].$3, style: i == 0 ? headerStyle : dataStyle),
             ],
           ),
           if (i == 0)
@@ -329,10 +323,8 @@ class TypographyPage extends StatelessWidget {
     final theme = ShadTheme.of(context);
     const mixed = '研听 · 全球机构研报中文解读 Report 2026';
 
-    TextStyle withCjk(TextStyle s) => s.copyWith(
-          letterSpacing: 0.0,
-          fontFamilyFallback: _fontFallback,
-        );
+    TextStyle withCjk(TextStyle s) =>
+        s.copyWith(letterSpacing: 0.0, fontFamilyFallback: _fontFallback);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -401,7 +393,10 @@ class TypographyPage extends StatelessWidget {
         _buildSubLabel(context, 'muted'),
         Text('Enter your email address.', style: theme.textTheme.muted),
         const SizedBox(height: 2),
-        Text('机构 · 2026-06-04 · meta 次要文本', style: withCjk(theme.textTheme.muted)),
+        Text(
+          '机构 · 2026-06-04 · meta 次要文本',
+          style: withCjk(theme.textTheme.muted),
+        ),
         const SizedBox(height: 16),
 
         // Blockquote
