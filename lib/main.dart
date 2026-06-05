@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ShadTextTheme only takes a family string; PingFang SC fallback is applied via DefaultTextStyle.merge below
-    final dmSansStyle = GoogleFonts.dmSans(
+    final dmSansStyle = GoogleFonts.dmSans().copyWith(
       fontFamilyFallback: ['PingFang SC', '.PingFang SC', 'Heiti SC'],
     );
 
